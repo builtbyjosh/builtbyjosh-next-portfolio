@@ -20,7 +20,7 @@ const ProjectCard = ({ project }) => {
           <Stack
             direction={"row"}
             p={4}
-            rounded="3xl"
+            rounded="2xl"
             borderWidth="1px"
             w="100%"
             h="100%"
