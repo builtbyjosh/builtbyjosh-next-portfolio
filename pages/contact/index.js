@@ -56,7 +56,7 @@ const ContactMe = () => {
                   <VStack textColor={"secondary.800"}>
                     <FormLabel>Name</FormLabel>
                     <InputGroup
-                      borderColor={errors ? "red.400" : "secondary.900"}
+                      borderColor={errors.name ? "red.400" : "secondary.900"}
                     >
                       <InputLeftElement>{<BsPerson />}</InputLeftElement>
                       <Input
