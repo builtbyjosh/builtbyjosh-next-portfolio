@@ -14,7 +14,7 @@ const ProjectCard = ({ project }) => {
   const toggleOpen = () => setIsOpen(!isOpen);
   const { id, title, desc, logo, link, technologies } = project;
   return (
-    <Container maxW="4xl" p={2}>
+    <Container maxW="2xl" p={2}>
       <Stack direction={"column"} spacing={4}>
         <Box onClick={toggleOpen} key={id}>
           <Stack

@@ -31,7 +31,13 @@ const Layout = ({ heading, children }) => {
                 direction={{ base: "column", md: "row" }}
               >
                 <PageIcons />
-                <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
+                <Box
+                  bg={"neutral.100"}
+                  borderRadius="lg"
+                  p={8}
+                  shadow="base"
+                  minW={{ base: "unset", md: "xl" }}
+                >
                   <VStack textColor={"secondary.800"}>{children}</VStack>
                 </Box>
               </Stack>

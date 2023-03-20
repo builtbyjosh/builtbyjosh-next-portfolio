@@ -14,6 +14,7 @@ import {
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import FormErrorMsg from "./FormErrorMsg";
+import FormInput from "./FormInput";
 
 const ContactForm = () => {
   const {
@@ -72,35 +73,20 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box p={8}>
         <VStack textColor={"secondary.800"}>
-          <FormLabel>Name</FormLabel>
-          <InputGroup borderColor={errors.name ? "red.400" : "secondary.900"}>
-            <InputLeftElement>{<BsPerson />}</InputLeftElement>
-            <Input
-              type="text"
-              name="name"
-              {...register("name", { required: true })}
-              placeholder="Your Name"
-              aria-invalid={errors.name ? "true" : "false"}
-            />
-          </InputGroup>
-          {errors.name?.type === "required" && (
-            <FormErrorMsg msg={"Name is required"} />
-          )}
+          <FormInput
+            icon={<BsPerson />}
+            name={"Name"}
+            errors={errors.name}
+            register={register}
+          />
 
-          <FormLabel>Email</FormLabel>
-          <InputGroup borderColor={errors.email ? "red.400" : "secondary.900"}>
-            <InputLeftElement>{<MdOutlineEmail />}</InputLeftElement>
-            <Input
-              type="email"
-              name="email"
-              {...register("email", { required: true })}
-              placeholder="Your Email"
-              aria-invalid={errors.email ? "true" : "false"}
-            />
-          </InputGroup>
-          {errors.email?.type === "required" && (
-            <FormErrorMsg msg={"Email is required"} />
-          )}
+          <FormInput
+            icon={<BsPerson />}
+            name={"Email"}
+            type={"email"}
+            errors={errors.email}
+            register={register}
+          />
 
           <FormLabel>Message</FormLabel>
           <Textarea
@@ -116,6 +102,7 @@ const ContactForm = () => {
           {errors.message?.type === "required" && (
             <FormErrorMsg msg={"Message is required"} />
           )}
+
           <Button
             bg="primary.100"
             _hover={{
