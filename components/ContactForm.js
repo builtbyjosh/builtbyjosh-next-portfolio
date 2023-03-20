@@ -22,8 +22,28 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("formData: ", data);
+  const onSubmit = async (data) => {
+    // console.log("formData: ", data);
+
+    const res = await fetch("/api/sendgrid", {
+      body: JSON.stringify({
+        email: data.email,
+        name: data.name,
+        subject: "New Contact",
+        message: data.message,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log(data.name, data.email, "New Contact", data.message);
   };
 
   return (
