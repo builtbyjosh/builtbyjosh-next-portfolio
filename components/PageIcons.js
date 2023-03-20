@@ -6,7 +6,7 @@ import {
   BsPersonFill,
   BsFillEnvelopeFill,
 } from "react-icons/bs";
-import IconLink from "./IconLink";
+import PageLink from "./PageLink";
 
 const PageIcons = () => {
   return (
@@ -17,16 +17,16 @@ const PageIcons = () => {
       maxH={"400px"}
     >
       <Tooltip label={"Home"} hasArrow shouldWrapChildren>
-        <IconLink href={"/"} icon={<BsHouseFill size="28px" />} />
+        <PageLink href={"/"} icon={<BsHouseFill size="28px" />} />
       </Tooltip>
       <Tooltip label={"About"} hasArrow shouldWrapChildren>
-        <IconLink href={"/about"} icon={<BsPersonFill />} />
+        <PageLink href={"/about"} icon={<BsPersonFill />} />
       </Tooltip>
       <Tooltip label={"Projects"} hasArrow shouldWrapChildren>
-        <IconLink href={"/projects"} icon={<BsFolderFill />} />
+        <PageLink href={"/projects"} icon={<BsFolderFill />} />
       </Tooltip>
       <Tooltip label={"Contact"} hasArrow shouldWrapChildren>
-        <IconLink href={"/contact"} icon={<BsFillEnvelopeFill />} />
+        <PageLink href={"/contact"} icon={<BsFillEnvelopeFill />} />
       </Tooltip>
     </Stack>
   );

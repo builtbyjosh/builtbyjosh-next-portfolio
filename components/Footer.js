@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import IconLink from "./IconLink";
+import SocialLink from "./SocialLink";
 
 const Footer = () => {
   const { hasCopied, onCopy } = useClipboard("joshuacollins912@gmail.com");
@@ -48,18 +48,18 @@ const Footer = () => {
             />
           </Tooltip>
 
-          <IconLink
+          <SocialLink
             href={"https://github.com/builtbyjosh"}
             icon={<BsGithub />}
             isExternal={true}
           />
 
-          <IconLink
+          <SocialLink
             href={"https://twitter.com/ThriftyCoder"}
             icon={<BsTwitter size="28px" />}
             isExternal={true}
           />
-          <IconLink
+          <SocialLink
             href={"https://www.linkedin.com/in/joshuajohncollins/"}
             icon={<BsLinkedin size="28px" />}
             isExternal={true}

@@ -1,10 +1,9 @@
 import React from "react";
-import { IconButton } from "@chakra-ui/react";
-import Link from "next/link";
+import { IconButton, Link } from "@chakra-ui/react";
 
-const IconLink = ({ href, icon, isExternal = false }) => {
+const SocialLink = ({ href, icon }) => {
   return (
-    <Link href={href} isExternal={isExternal}>
+    <Link href={href} isExternal>
       <IconButton
         aria-label="github"
         variant="ghost"
@@ -22,4 +21,4 @@ const IconLink = ({ href, icon, isExternal = false }) => {
   );
 };
 
-export default IconLink;
+export default SocialLink;
