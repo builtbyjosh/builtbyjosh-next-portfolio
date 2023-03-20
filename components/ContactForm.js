@@ -7,7 +7,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Stack,
+  useToast,
   Textarea,
   VStack,
 } from "@chakra-ui/react";
@@ -19,32 +19,56 @@ const ContactForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
   } = useForm();
+  const toast = useToast();
 
   const onSubmit = async (data) => {
     // console.log("formData: ", data);
-
-    const res = await fetch("/api/sendgrid", {
-      body: JSON.stringify({
-        email: data.email,
-        name: data.name,
-        subject: "New Contact",
-        message: data.message,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const { error } = await res.json();
-    if (error) {
-      console.log(error);
-      return;
+    try {
+      const res = await fetch("/api/sendgrid", {
+        body: JSON.stringify({
+          email: data.email,
+          name: data.name,
+          subject: "New Contact",
+          message: data.message,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+      toast({
+        position: "top",
+        title: "Message Sent!",
+        description: "Thanks for reaching out! I will get back soon!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        variant: "top-accent",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        position: "top",
+        title: "Something Went Wrong",
+        description: error.message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        variant: "top-accent",
+      });
     }
     console.log(data.name, data.email, "New Contact", data.message);
   };
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ name: "", email: "", message: "" });
+    }
+  }, [formState, reset]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
