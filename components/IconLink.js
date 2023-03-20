@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, IconButton } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
+import Link from "next/link";
 
 const IconLink = ({ href, icon, isExternal = false }) => {
   return (
