@@ -26,13 +26,12 @@ const ContactForm = () => {
   const toast = useToast();
 
   const onSubmit = async (data) => {
-    // console.log("formData: ", data);
     try {
       const res = await fetch("/api/sendgrid", {
         body: JSON.stringify({
           email: data.email,
           name: data.name,
-          subject: "New Contact",
+          subject: `New Message from: ${data.name}`,
           message: data.message,
         }),
         headers: {
@@ -61,7 +60,6 @@ const ContactForm = () => {
         variant: "top-accent",
       });
     }
-    console.log(data.name, data.email, "New Contact", data.message);
   };
 
   useEffect(() => {
@@ -72,7 +70,7 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
+      <Box p={8}>
         <VStack textColor={"secondary.800"}>
           <FormLabel>Name</FormLabel>
           <InputGroup borderColor={errors.name ? "red.400" : "secondary.900"}>
