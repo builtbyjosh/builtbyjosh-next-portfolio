@@ -71,8 +71,8 @@ const ContactForm = () => {
   }, [formState, reset]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Box p={8}>
+    <Box p={{ base: 2, lg: 8 }} w={"100%"}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <VStack textColor={"secondary.800"}>
           <FormInput
             icon={<BsPerson />}
@@ -114,8 +114,8 @@ const ContactForm = () => {
             Send Message
           </Button>
         </VStack>
-      </Box>
-    </form>
+      </form>
+    </Box>
   );
 };
 
