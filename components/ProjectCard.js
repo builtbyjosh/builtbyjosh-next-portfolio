@@ -1,10 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import { Container, Stack, Text, Tag, Link, Box } from "@chakra-ui/react";
 
 const ProjectCard = ({ project }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-  const { id, title, desc, logo, link, technologies } = project;
+  const { id, title, desc, link, technologies } = project;
   return (
     <Container maxW="2xl" p={2}>
       <Stack direction={"column"}>
@@ -14,27 +14,23 @@ const ProjectCard = ({ project }) => {
             rounded="2xl"
             borderWidth="1px"
             borderColor={"secondary.600"}
-            bg={"secondary.200"}
             cursor="pointer"
             _hover={{ shadow: "lg" }}
           >
             <Stack direction={"column"} align="start" justify="flex-start">
               <Stack direction={"column"} spacing={0} align="start">
                 <Stack direction={"row"}>
-                  <Text
-                    as={Link}
+                  <Link
                     href={link}
                     fontWeight="bold"
-                    noOfLines={1}
-                    onClick={(e) => e.stopPropagation()}
                     isExternal
                     fontSize={"lg"}
                   >
                     {title}
-                  </Text>
+                  </Link>
                   <Stack direction={"row"} spacing="1">
                     {technologies.map((tech, index) => (
-                      <Tag key={index} size="sm" bg={"primary.100"}>
+                      <Tag key={index} size="sm" bg={"primary.200"}>
                         {tech}
                       </Tag>
                     ))}
@@ -42,12 +38,20 @@ const ProjectCard = ({ project }) => {
                 </Stack>
 
                 {!isOpen && (
-                  <Text fontSize="sm" noOfLines={{ base: 2 }}>
+                  <Text
+                    fontSize="sm"
+                    color={"primary.500"}
+                    noOfLines={{ base: 2 }}
+                  >
                     {desc}
                   </Text>
                 )}
 
-                {isOpen && <Text fontSize="sm">{desc}</Text>}
+                {isOpen && (
+                  <Text fontSize="sm" color={"primary.500"}>
+                    {desc}
+                  </Text>
+                )}
               </Stack>
             </Stack>
           </Stack>

@@ -11,7 +11,7 @@ const PageLink = ({ href, icon }) => {
         size="lg"
         fontSize="3xl"
         icon={icon}
-        color={"primary.100"}
+        color={"primary.200"}
         _hover={{
           bg: "primary.default",
           color: "white",
