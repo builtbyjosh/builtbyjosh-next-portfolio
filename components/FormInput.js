@@ -16,7 +16,7 @@ const FormInput = ({ name, type = "text", errors, register, icon }) => {
         <Input
           type={type}
           name={name.toLowerCase()}
-          {...register("name", { required: true })}
+          {...register(`${name.toLowerCase()}`, { required: true })}
           placeholder="Your Name"
           aria-invalid={errors ? "true" : "false"}
         />
