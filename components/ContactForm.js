@@ -27,6 +27,7 @@ const ContactForm = () => {
   const toast = useToast();
 
   const onSubmit = async (data) => {
+    console.log("data:", data);
     try {
       const res = await fetch("/api/sendgrid", {
         body: JSON.stringify({
