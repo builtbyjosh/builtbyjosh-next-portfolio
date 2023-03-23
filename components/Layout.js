@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Stack, VStack } from "@chakra-ui/react";
-
+import { motion } from "framer-motion";
 import Footer from "./Footer";
 import Header from "./Header";
 import PageIcons from "./PageIcons";
@@ -31,15 +31,22 @@ const Layout = ({ heading, children }) => {
                 direction={{ base: "column", md: "row" }}
               >
                 <PageIcons />
-                <Box
-                  bg={"neutral.100"}
-                  borderRadius="lg"
-                  p={8}
-                  shadow="base"
-                  minW={{ base: "unset", md: "xl" }}
+                <motion.div
+                  initial={{ x: 300, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 300, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 >
-                  <VStack textColor={"secondary.800"}>{children}</VStack>
-                </Box>
+                  <Box
+                    bg={"neutral.100"}
+                    borderRadius="lg"
+                    p={8}
+                    shadow="base"
+                    minW={"xl"}
+                  >
+                    <VStack textColor={"secondary.800"}>{children}</VStack>
+                  </Box>
+                </motion.div>
               </Stack>
             </VStack>
           </Box>
