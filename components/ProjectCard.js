@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
         <Box onClick={toggleOpen} key={id}>
           <Stack
             p={4}
-            rounded="2xl"
+            rounded="lg"
             borderWidth="1px"
             borderColor={"secondary.600"}
             cursor="pointer"
