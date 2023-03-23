@@ -13,7 +13,12 @@ const AboutMe = () => {
   ];
   return (
     <Layout heading={"A little about Me!"}>
-      <Stack textAlign={"left"} color={"primary.500"} spacing={5}>
+      <Stack
+        transition={"ease-in"}
+        textAlign={"left"}
+        color={"primary.500"}
+        spacing={5}
+      >
         <Text>
           I first became intersted in Software development in 2018. I started
           working through freeCodeCamps learning modules and then moved onto
