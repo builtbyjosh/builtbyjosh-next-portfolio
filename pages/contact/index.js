@@ -7,8 +7,9 @@ const ContactMe = () => {
     <Layout heading={"Get in Touch"}>
       <Container maxW="2xl" p={2}>
         <Text textColor={"primary.500"}>
-          Please feel free to reach out if you have any questions for me or if
-          you would like to discuss helping you create a website
+          Please feel free to reach out if you have any questions for me, would
+          like to discuss a possible job opportunity or if you would like to
+          discuss helping you create a website
         </Text>
         <Divider
           my={5}
