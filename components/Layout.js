@@ -42,7 +42,7 @@ const Layout = ({ heading, children }) => {
                     borderRadius="lg"
                     p={8}
                     shadow="base"
-                    minW={"xl"}
+                    minW={"2xl"}
                   >
                     <VStack textColor={"secondary.800"}>{children}</VStack>
                   </Box>
