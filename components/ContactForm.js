@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
-  Container,
   Button,
   FormLabel,
   useToast,
   Textarea,
   VStack,
-  Stack,
 } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
