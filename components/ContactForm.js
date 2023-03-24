@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
-  Box,
+  Container,
   Button,
   FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
   useToast,
   Textarea,
   VStack,
+  Stack,
 } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
@@ -71,51 +69,50 @@ const ContactForm = () => {
   }, [formState, reset]);
 
   return (
-    <Box p={{ base: 2, lg: 8 }} w={"100%"}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <VStack textColor={"secondary.800"}>
-          <FormInput
-            icon={<BsPerson />}
-            name={"Name"}
-            errors={errors.name}
-            register={register}
-          />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <VStack textColor={"primary.500"} spacing={5}>
+        <FormInput
+          icon={<BsPerson />}
+          name={"Name"}
+          errors={errors.name}
+          register={register}
+        />
 
-          <FormInput
-            icon={<BsPerson />}
-            name={"Email"}
-            type={"email"}
-            errors={errors.email}
-            register={register}
-          />
+        <FormInput
+          icon={<BsPerson />}
+          name={"Email"}
+          type={"email"}
+          errors={errors.email}
+          register={register}
+        />
 
-          <FormLabel>Message</FormLabel>
-          <Textarea
-            id="message"
-            name="message"
-            {...register("message", { required: true })}
-            placeholder="Your Message"
-            rows={6}
-            resize="none"
-            borderColor={errors.message ? "red.400" : "secondary.900"}
-            aria-invalid={errors.message ? "true" : "false"}
-          />
-          {errors.message?.type === "required" && (
-            <FormErrorMsg msg={"Message is required"} />
-          )}
+        <FormLabel>Message</FormLabel>
+        <Textarea
+          id="message"
+          name="message"
+          {...register("message", { required: true })}
+          placeholder="Your Message"
+          _placeholder={{ color: "primary.500" }}
+          rows={6}
+          resize="none"
+          borderColor={errors.message ? "red.400" : "primary.500"}
+          aria-invalid={errors.message ? "true" : "false"}
+        />
+        {errors.message?.type === "required" && (
+          <FormErrorMsg msg={"Message is required"} />
+        )}
 
-          <Button
-            bg="primary.100"
-            _hover={{
-              bg: "primary.default",
-            }}
-            type={"submit"}
-          >
-            Send Message
-          </Button>
-        </VStack>
-      </form>
-    </Box>
+        <Button
+          bg="primary.100"
+          _hover={{
+            bg: "primary.default",
+          }}
+          type={"submit"}
+        >
+          Send Message
+        </Button>
+      </VStack>
+    </form>
   );
 };
 
