@@ -14,7 +14,7 @@ const PageIcons = () => {
       align="center"
       justify="space-around"
       direction={{ base: "row", md: "column" }}
-      maxH={"400px"}
+      h={{ base: "unset", md: "200px" }}
     >
       <Tooltip label={"Home"} hasArrow shouldWrapChildren>
         <PageLink href={"/"} icon={<BsHouseFill size="28px" />} />
