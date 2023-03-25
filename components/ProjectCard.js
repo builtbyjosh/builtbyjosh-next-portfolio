@@ -19,7 +19,7 @@ const ProjectCard = ({ project }) => {
           >
             <Stack direction={"column"} align="start" justify="flex-start">
               <Stack direction={"column"} spacing={0} align="start">
-                <Stack direction={"row"}>
+                <Stack direction={{ base: "column", md: "row" }}>
                   <Link
                     href={link}
                     fontWeight="bold"
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
                   </Link>
                   <Stack direction={"row"} spacing="1">
                     {technologies.map((tech, index) => (
-                      <Tag key={index} size="sm" bg={"primary.200"}>
+                      <Tag p={1} key={index} size="sm" bg={"primary.200"}>
                         {tech}
                       </Tag>
                     ))}
