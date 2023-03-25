@@ -35,15 +35,9 @@ const Layout = ({ heading, children }) => {
                   initial={{ x: 300, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 300, opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 10 }}
                 >
-                  <Box
-                    bg={"neutral.100"}
-                    borderRadius="lg"
-                    p={8}
-                    shadow="base"
-                    minW={"2xl"}
-                  >
+                  <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
                     <VStack textColor={"secondary.800"}>{children}</VStack>
                   </Box>
                 </motion.div>

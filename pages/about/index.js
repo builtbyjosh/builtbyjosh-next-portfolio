@@ -13,8 +13,8 @@ const AboutMe = () => {
   ];
   return (
     <Layout heading={"A little about Me!"}>
-      <Container maxW="2xl" p={2}>
-        <Stack textAlign={"left"} color={"primary.500"} spacing={5}>
+      <Container maxW={"2xl"} p={2}>
+        <Stack color={"primary.500"} spacing={5}>
           <Text>
             I first became intersted in Software development in 2018. I started
             working through freeCodeCamps learning modules and then moved onto

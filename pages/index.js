@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import Layout from "../components/Layout";
-import { Box, Text, Heading, Stack } from "@chakra-ui/react";
+import { Container, Text, Heading, Stack } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <Layout heading={"Welcome!"}>
-      <Box maxW={"2xl"}>
+    <Layout heading={"Welcome to my Page!"}>
+      <Container maxW={"2xl"} p={2}>
         <Stack mb={4} direction={{ base: "row", md: "column" }}>
           <Text color={"primary.500"}>Hey! My name is </Text>
           <Heading size={"md"}>Joshua Collins</Heading>
@@ -20,7 +20,7 @@ export default function Home() {
           responsive and engaging websites that are not only visually appealing
           but also functional and user-friendly."
         </Text>
-      </Box>
+      </Container>
     </Layout>
   );
 }
