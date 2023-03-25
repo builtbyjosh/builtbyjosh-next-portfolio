@@ -24,3 +24,9 @@ a {
     background: black;
   }
 }
+#tsparticles {
+  position: absolute;
+  z-index: -1;
+
+
+}
