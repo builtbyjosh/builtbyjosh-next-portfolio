@@ -4,9 +4,9 @@ import { Container, Text, Heading, Stack } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <Layout heading={"Welcome to my Page!"}>
+    <Layout heading={"Welcome!"}>
       <Container maxW={"2xl"} p={2}>
-        <Stack mb={4} direction={{ base: "row", md: "column" }}>
+        <Stack mb={4} direction={{ base: "column", md: "row" }}>
           <Text color={"primary.500"}>Hey! My name is </Text>
           <Heading size={"md"}>Joshua Collins</Heading>
         </Stack>
