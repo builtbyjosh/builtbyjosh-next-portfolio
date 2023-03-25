@@ -32,10 +32,9 @@ const Layout = ({ heading, children }) => {
               >
                 <PageIcons />
                 <motion.div
-                  initial={{ x: 300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 300, opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
                 >
                   <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
                     <VStack textColor={"secondary.800"}>{children}</VStack>
