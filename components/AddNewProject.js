@@ -2,8 +2,10 @@ import { Box } from "@chakra-ui/layout";
 import React from "react";
 import { useForm } from "react-hook-form";
 import FormInput from "./FormInput";
+import useAuth from "../hooks/useAuth";
 
 const AddNewProject = () => {
+  const { isLoggedIn, user } = useAuth();
   const {
     register,
     handleSubmit,
