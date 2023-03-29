@@ -19,7 +19,6 @@ const LoginForm = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log("data:", data);
     try {
       signInWithEmailAndPassword(auth, data.email, data.password)
         .then((res) => {
