@@ -15,6 +15,7 @@
     "@fontsource/rubik": "^4.5.14",
     "@fontsource/sono": "^4.5.1",
     "@sendgrid/mail": "^7.7.0",
+    "firebase": "^9.18.0",
     "framer-motion": "^9.1.7",
     "json-loader": "^0.5.7",
     "next": "13.1.6",
