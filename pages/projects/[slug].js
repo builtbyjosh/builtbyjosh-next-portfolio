@@ -25,7 +25,7 @@ const ProjectPage = () => {
   // } = data;
 
   return (
-    <Layout heading={title}>
+    <Layout heading={"Fix Later"}>
       <Container maxW={"2xl"} p={2}></Container>
     </Layout>
   );
