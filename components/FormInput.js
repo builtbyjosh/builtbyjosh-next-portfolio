@@ -6,12 +6,19 @@ import {
 } from "@chakra-ui/react";
 import FormErrorMsg from "./FormErrorMsg";
 
-const FormInput = ({ name, type = "text", errors, register, icon }) => {
+const FormInput = ({
+  name,
+  type = "text",
+  errors,
+  register,
+  icon,
+  required = true,
+}) => {
   return (
     <>
       <FormLabel>{name}</FormLabel>
       <InputGroup borderColor={errors ? "red.400" : "primary.500"}>
-        <InputLeftElement>{icon}</InputLeftElement>
+        {icon && <InputLeftElement>{icon}</InputLeftElement>}
         <Input
           type={type}
           name={name.toLowerCase()}
