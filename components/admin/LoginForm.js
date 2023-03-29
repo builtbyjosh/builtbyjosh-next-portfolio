@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { auth } from "../firebase/config";
+import { auth } from "../../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { Button, VStack } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 
-import FormInput from "./FormInput";
+import FormInput from "../FormInput";
 
 const LoginForm = () => {
   const {

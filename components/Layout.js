@@ -8,12 +8,7 @@ const Layout = ({ heading, children }) => {
   return (
     <Box h={"100vh"}>
       <Header />
-      <Flex
-        align="center"
-        justify="center"
-        id="contact"
-        pb={{ base: "120px", md: "20px" }}
-      >
+      <Flex align="center" justify="center" pb={{ base: "120px", md: "20px" }}>
         <Box m={{ base: 5, md: 12, lg: 6 }} p={{ base: 5, lg: 12 }}>
           <Box>
             <VStack spacing={{ base: 4, md: 8, lg: 10 }}>

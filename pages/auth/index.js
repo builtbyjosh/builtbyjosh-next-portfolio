@@ -1,47 +1,93 @@
-import { Box, Button, Container, Link, Text } from "@chakra-ui/react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { FaGoogle, FaMoon, FaSun } from "react-icons/fa";
-import LoginForm from "../../components/LoginForm";
+import {
+  Box,
+  Heading,
+  Container,
+  Flex,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import LoginForm from "../../components/admin/LoginForm";
 import { auth } from "../../firebase/config";
 import useAuth from "../../hooks/useAuth";
-import Layout from "../../components/Layout";
+import PageIcons from "../../components/PageIcons";
+import ProjectList from "../../components/admin/ProjectList";
+import AddNewProject from "../../components/admin/AddNewProject";
 
 const Auth = () => {
   const { isLoggedIn, user } = useAuth();
-  const handleAuth = async () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        const user = res.user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorCode, errorMessage);
-      });
-  };
+
   return (
-    <Layout heading={"Log In"}>
-      <Container maxW={"2xl"} p={2}>
-        <Box
-          border={"1px"}
-          borderRadius={"2xl"}
-          p={2}
-          boxShadow={"lg"}
-          top="5%"
-          right="5%"
-        >
-          {isLoggedIn && (
-            <Box>
-              <Text color="green.500">{user.email}</Text>
-              <Link color="red.500" onClick={() => auth.signOut()}>
-                Logout
-              </Link>
+    <Stack align={"center"} justify={"center"}>
+      <Heading fontSize={"5xl"}>
+        {isLoggedIn ? "Admin Panel" : "Log In"}
+      </Heading>
+      {!isLoggedIn && <LoginForm />}
+      {isLoggedIn && (
+        <>
+          <Stack direction={"row"} spacing={5}>
+            <Box display={"flex"}>
+              <PageIcons />
+              <Box>
+                <ProjectList />
+              </Box>
             </Box>
-          )}
-          {!isLoggedIn && <LoginForm />}
-        </Box>
-      </Container>
-    </Layout>
+
+            <AddNewProject />
+          </Stack>
+
+          <Text>{user.email}</Text>
+          <Link color="red.500" onClick={() => auth.signOut()}>
+            Logout
+          </Link>
+        </>
+      )}
+    </Stack>
   );
 };
 export default Auth;
+
+// <Flex direction={"row"} w={"100%"}>
+// <Stack flexGrow={3}>
+//   <Flex
+//     align="center"
+//     justify="center"
+//     pb={{ base: "120px", md: "20px" }}
+//   >
+//     <Box m={{ base: 5, md: 12, lg: 6 }} p={{ base: 5, lg: 12 }}>
+//       <Stack direction={"column"} spacing={{ base: 4, md: 8, lg: 10 }}>
+//         <Heading fontSize={"5xl"}>
+//           {isLoggedIn ? "Admin Panel" : "Log In"}
+//         </Heading>
+
+//         <Stack
+//           spacing={{ base: 4, md: 8, lg: 10 }}
+//           direction={{ base: "column", md: "row" }}
+//         >
+//           <PageIcons />
+
+//           <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
+//             <Stack direction={"column"} textColor={"secondary.800"}>
+//               {isLoggedIn && (
+//                 <Container maxW={"2xl"} p={2}>
+//                   <Box>
+//                     <Text color="green.500">{user.email}</Text>
+//                     <Link color="red.500" onClick={() => auth.signOut()}>
+//                       Logout
+//                     </Link>
+//                     <ProjectList />
+//                   </Box>
+//                 </Container>
+//               )}
+//             </Stack>
+//           </Box>
+//         </Stack>
+//       </Stack>
+//     </Box>
+//     {!isLoggedIn && <LoginForm />}
+//   </Flex>
+// </Stack>
+// <Stack pt={"95px"} flex="1">
+//   <AddNewProject />
+// </Stack>
+// </Flex>
