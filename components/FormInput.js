@@ -13,6 +13,7 @@ const FormInput = ({
   register,
   icon,
   required = true,
+  value = null,
 }) => {
   return (
     <>
@@ -23,9 +24,10 @@ const FormInput = ({
           type={type}
           name={name.toLowerCase()}
           {...register(`${name.toLowerCase()}`, { required: true })}
-          placeholder="Your Name"
+          placeholder={`Your ${name}`}
           _placeholder={{ color: "primary.500" }}
           aria-invalid={errors ? "true" : "false"}
+          defaultValue={value}
         />
       </InputGroup>
       {errors?.type === "required" && (

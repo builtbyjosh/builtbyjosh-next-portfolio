@@ -59,6 +59,7 @@ const updateProject = async ({
 }) => {
   try {
     const projectRef = doc(db, "project", projectId);
+    console.log("projectRef:", projectRef);
     await updateDoc(projectRef, {
       title: title,
       desc: desc,

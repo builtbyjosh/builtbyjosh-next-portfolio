@@ -1,8 +1,17 @@
-import { Stack, Text, IconButton, Box, Link } from "@chakra-ui/react";
+import {
+  Stack,
+  Text,
+  IconButton,
+  Box,
+  Link,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { deleteProject } from "../../pages/api/projects";
+import EditProject from "./EditProject";
 
 const ProjectListItem = ({ project, refreshData }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { title, desc, technologies, link, createdAt, uid } = project;
   const handleProjectDelete = async (uid) => {
     if (confirm("Are you sure you wanna delete this todo?")) {
@@ -28,9 +37,15 @@ const ProjectListItem = ({ project, refreshData }) => {
             icon={<FaTrash />}
             onClick={() => handleProjectDelete(uid)}
           />
-          <IconButton icon={<FaEdit />} />
+          <IconButton icon={<FaEdit />} onClick={onOpen} />
         </Stack>
       </Stack>
+      <EditProject
+        project={project}
+        isOpen={isOpen}
+        onClose={onClose}
+        refreshData={refreshData}
+      />
     </Stack>
   );
 };

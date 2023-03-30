@@ -6,7 +6,6 @@ import { addProject } from "../../pages/api/projects";
 import { Box, Button, VStack, Stack, Flex } from "@chakra-ui/react";
 
 const AddNewProject = () => {
-  const { isLoggedIn, user } = useAuth();
   const {
     register,
     handleSubmit,
