@@ -42,7 +42,7 @@ const ProjectList = () => {
       {isLoading && <Spinner />}
       {!isLoading && (
         <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
-          <Heading>Project List</Heading>
+          <Heading mb={5}>Project List</Heading>
           <VStack spacing={2}>
             {projects.map((project) => (
               <ProjectListItem

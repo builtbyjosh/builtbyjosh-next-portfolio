@@ -19,24 +19,24 @@ const Auth = () => {
 
   return (
     <Stack align={"center"} justify={"center"}>
-      <Heading fontSize={"5xl"}>
+      <Heading my={5} fontSize={"5xl"}>
         {isLoggedIn ? "Admin Panel" : "Log In"}
       </Heading>
       {!isLoggedIn && <LoginForm />}
       {isLoggedIn && (
         <>
-          <Stack direction={"row"} spacing={5}>
+          <Stack direction={{ base: "column", md: "row" }} spacing={5}>
             <Box display={"flex"}>
-              <PageIcons />
-              <Box>
-                <ProjectList />
-              </Box>
+              <Stack direction={{ base: "column", md: "row" }} spacing={5}>
+                <PageIcons />
+                <Box>
+                  <ProjectList />
+                </Box>
+              </Stack>
             </Box>
-
             <AddNewProject />
           </Stack>
 
-          <Text>{user.email}</Text>
           <Link color="red.500" onClick={() => auth.signOut()}>
             Logout
           </Link>
