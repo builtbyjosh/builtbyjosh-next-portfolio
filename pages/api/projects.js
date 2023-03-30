@@ -18,6 +18,7 @@ const getAllProjects = async () => {
     console.log("PROJECT OBJ: ", projectObj);
     projectsArr.push(projectObj);
   });
+  console.log("ALL PROJECTS: ", projectsArr);
   return projectsArr;
 };
 

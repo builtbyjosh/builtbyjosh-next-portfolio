@@ -30,7 +30,9 @@ const ProjectList = () => {
     setProjects(projectsArr);
     setIsLoading(false);
   };
-
+  const refreshData = () => {
+    getProjects();
+  };
   useEffect(() => {
     getProjects();
   }, []);
@@ -43,7 +45,11 @@ const ProjectList = () => {
           <Heading>Project List</Heading>
           <VStack spacing={2}>
             {projects.map((project) => (
-              <ProjectListItem key={project.uid} project={project} />
+              <ProjectListItem
+                key={project.uid}
+                project={project}
+                refreshData={refreshData}
+              />
             ))}
           </VStack>
         </Box>
