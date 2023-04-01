@@ -24,7 +24,7 @@ const AboutMe = () => {
     <Layout heading={"A little about Me!"}>
       <Container maxW={"2xl"} p={2}>
         <Stack color={"primary.500"} spacing={5}>
-          <Box style={{ textIndent: 30 }}>
+          <Box style={{ textIndent: 30 }} lineHeight="taller">
             <Text>
               I first became intersted in Software development in{" "}
               <span style={{ fontWeight: "bold" }}>2018</span>. I started
