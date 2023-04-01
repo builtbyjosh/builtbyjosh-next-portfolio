@@ -8,17 +8,13 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
-const getAllProjects = async () => {
-  const querySnapshot = await getDocs(collection(db, "projects"));
-  let projectsArr = [];
 
-  querySnapshot.forEach((project) => {
-    let projectObj = project.data();
-    projectObj.uuid = project.id;
-    console.log("PROJECT OBJ: ", projectObj);
-    projectsArr.push(projectObj);
+const getAllProjects = async () => {
+  const querySnapshot = await getDocs(collection(db, "project"));
+  const projectsArr = [];
+  querySnapshot.forEach(async (proj) => {
+    projectsArr.push({ uid: proj.id, ...proj.data() });
   });
-  console.log("ALL PROJECTS: ", projectsArr);
   return projectsArr;
 };
 
