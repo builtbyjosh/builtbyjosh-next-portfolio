@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Stack,
   Text,
@@ -10,9 +10,11 @@ import {
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { deleteProject } from "../../pages/api/projects";
 import EditProject from "./EditProject";
+import LoadingContext from "../../hooks/LoadingContext";
 
-const ProjectListItem = ({ project, setIsLoading }) => {
+const ProjectListItem = ({ project }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { setIsLoading } = useContext(LoadingContext);
   const { title, desc, technologies, link, createdAt, uid } = project;
   const handleProjectDelete = async (uid) => {
     if (confirm("Are you sure you wanna delete this todo?")) {
@@ -42,12 +44,7 @@ const ProjectListItem = ({ project, setIsLoading }) => {
           <IconButton icon={<FaEdit />} onClick={onOpen} />
         </Stack>
       </Stack>
-      <EditProject
-        project={project}
-        isOpen={isOpen}
-        onClose={onClose}
-        setIsLoading={setIsLoading}
-      />
+      <EditProject project={project} isOpen={isOpen} onClose={onClose} />
     </Stack>
   );
 };

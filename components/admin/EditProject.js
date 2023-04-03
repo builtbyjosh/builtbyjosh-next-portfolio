@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -13,8 +13,10 @@ import {
 import { updateProject } from "../../pages/api/projects";
 import FormInput from "../FormInput";
 import { useForm } from "react-hook-form";
+import LoadingContext from "../../hooks/LoadingContext";
 
-const EditProject = ({ project, isOpen, onClose, setIsLoading }) => {
+const EditProject = ({ project, isOpen, onClose }) => {
+  const { setIsLoading } = useContext(LoadingContext);
   const { title, desc, technologies, link, createdAt, uid } = project;
   const {
     register,
@@ -26,6 +28,7 @@ const EditProject = ({ project, isOpen, onClose, setIsLoading }) => {
 
   const handleProjectUpdate = async (data) => {
     setIsLoading(true);
+
     const technologiesArr = data.technologies.split(",");
     const project = {
       projectId: uid,
@@ -36,6 +39,7 @@ const EditProject = ({ project, isOpen, onClose, setIsLoading }) => {
     };
     await updateProject(project);
     setIsLoading(false);
+
     onClose();
   };
   return (
