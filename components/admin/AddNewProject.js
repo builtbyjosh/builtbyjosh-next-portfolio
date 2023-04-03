@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import FormInput from "../FormInput";
-import useAuth from "../../hooks/useAuth";
 import { addProject } from "../../pages/api/projects";
-import { Box, Button, VStack, Stack, Flex, Container } from "@chakra-ui/react";
+import { Box, Button, Container } from "@chakra-ui/react";
 
 const AddNewProject = () => {
   const {
@@ -11,7 +10,7 @@ const AddNewProject = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm();
 
   const handleProjectCreate = async (data) => {

@@ -1,14 +1,12 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Button,
-  Text,
 } from "@chakra-ui/react";
 import { updateProject } from "../../pages/api/projects";
 import FormInput from "../FormInput";
@@ -21,9 +19,7 @@ const EditProject = ({ project, isOpen, onClose }) => {
   const {
     register,
     handleSubmit,
-    reset,
-    formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm();
 
   const handleProjectUpdate = async (data) => {
