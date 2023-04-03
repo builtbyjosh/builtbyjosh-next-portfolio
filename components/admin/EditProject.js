@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,9 +14,8 @@ import { updateProject } from "../../pages/api/projects";
 import FormInput from "../FormInput";
 import { useForm } from "react-hook-form";
 
-const EditProject = ({ project, isOpen, onClose, refreshData }) => {
+const EditProject = ({ project, isOpen, onClose, setIsLoading }) => {
   const { title, desc, technologies, link, createdAt, uid } = project;
-
   const {
     register,
     handleSubmit,
@@ -26,6 +25,7 @@ const EditProject = ({ project, isOpen, onClose, refreshData }) => {
   } = useForm();
 
   const handleProjectUpdate = async (data) => {
+    setIsLoading(true);
     const technologiesArr = data.technologies.split(",");
     const project = {
       projectId: uid,
@@ -35,7 +35,7 @@ const EditProject = ({ project, isOpen, onClose, refreshData }) => {
       technologies: technologiesArr,
     };
     await updateProject(project);
-    refreshData();
+    setIsLoading(false);
     onClose();
   };
   return (

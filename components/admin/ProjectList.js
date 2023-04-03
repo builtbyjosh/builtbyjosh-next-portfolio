@@ -12,30 +12,19 @@ import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../firebase/config";
 import { FaTrash } from "react-icons/fa";
 import ProjectListItem from "./ProjectListItem";
-
+import { getAllProjects } from "../../pages/api/projects";
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const getProjects = async () => {
-    setIsLoading(true);
-    const querySnapshot = await getDocs(collection(db, "project"));
-    let projectsArr = [];
 
-    querySnapshot.forEach((project) => {
-      let projectObj = project.data();
-      projectObj.uid = project.id;
-      console.log("PROJECT OBJ: ", projectObj);
-      projectsArr.push(projectObj);
-    });
-    setProjects(projectsArr);
-    setIsLoading(false);
-  };
-  const refreshData = () => {
-    getProjects();
-  };
   useEffect(() => {
-    getProjects();
-  }, []);
+    const fetchData = async () => {
+      const fetchedProjects = await getAllProjects();
+      setProjects(fetchedProjects);
+    };
+
+    fetchData();
+  }, [isLoading]);
   console.log(projects);
   return (
     <Container minW={"2xl"}>
@@ -48,7 +37,7 @@ const ProjectList = () => {
               <ProjectListItem
                 key={project.uid}
                 project={project}
-                refreshData={refreshData}
+                setIsLoading={setIsLoading}
               />
             ))}
           </VStack>

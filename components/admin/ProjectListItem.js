@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Stack,
   Text,
@@ -10,13 +11,14 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { deleteProject } from "../../pages/api/projects";
 import EditProject from "./EditProject";
 
-const ProjectListItem = ({ project, refreshData }) => {
+const ProjectListItem = ({ project, setIsLoading }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { title, desc, technologies, link, createdAt, uid } = project;
   const handleProjectDelete = async (uid) => {
     if (confirm("Are you sure you wanna delete this todo?")) {
+      setIsLoading(true);
       deleteProject(uid);
-      refreshData();
+      setIsLoading(false);
     }
   };
 
@@ -44,7 +46,7 @@ const ProjectListItem = ({ project, refreshData }) => {
         project={project}
         isOpen={isOpen}
         onClose={onClose}
-        refreshData={refreshData}
+        setIsLoading={setIsLoading}
       />
     </Stack>
   );
