@@ -40,5 +40,5 @@ export default ProjectPage;
 
 export async function getServerSideProps({ params: { uid } }) {
   const projectData = await getProjectById(uid);
-  return { props: { projectData: projectData }, revalidate: 1 };
+  return { props: { projectData: projectData } };
 }
