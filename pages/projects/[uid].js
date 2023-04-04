@@ -1,23 +1,10 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
-import {
-  Container,
-  Stack,
-  Text,
-  Tag,
-  Box,
-  Heading,
-  Link,
-} from "@chakra-ui/react";
+import { Container, Stack, Text, Tag, Heading, Link } from "@chakra-ui/react";
 import { getAllProjects, getProjectById } from "../api/projects";
 
 const ProjectPage = ({ projectData }) => {
-  const router = useRouter();
-  const data = router.query;
   const { title, desc, link, technologies } = projectData;
 
-  console.log("projectData", projectData);
   return (
     <Layout heading={"Project Details"}>
       <Container maxW={"2xl"} p={2}>
