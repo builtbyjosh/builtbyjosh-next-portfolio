@@ -5,11 +5,8 @@ import { Container } from "@chakra-ui/layout";
 import { getAllProjects } from "../api/projects";
 import Link from "next/link";
 const Projects = ({ projects }) => {
-  console.log("server side projects: ", projects);
-  const uid = "FDE07duGO94qyYEMFxjs";
   return (
     <Layout heading={"Some of My Work"}>
-      <Link href={`projects/${uid}`}>ID</Link>
       <Container maxW={"2xl"} p={2}>
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
