@@ -6,22 +6,26 @@ const ProjectPage = ({ projectData }) => {
   const { title, desc, link, technologies } = projectData;
 
   return (
-    <Layout heading={"Project Details"}>
-      <Container maxW={"2xl"} p={2}>
-        <Heading>{title}</Heading>
-        <Stack direction={"row"} spacing="1">
-          {technologies.map((tech, index) => (
-            <Tag p={1} key={index} size="sm" bg={"primary.200"}>
-              {tech}
-            </Tag>
-          ))}
-        </Stack>
-        <Text>{desc}</Text>
-        <Link isExternal href={link}>
-          Github Repo
-        </Link>
-      </Container>
-    </Layout>
+    <>
+      {projectData && (
+        <Layout heading={"Project Details"}>
+          <Container maxW={"2xl"} p={2}>
+            <Heading>{title}</Heading>
+            <Stack direction={"row"} spacing="1">
+              {technologies.map((tech, index) => (
+                <Tag p={1} key={index} size="sm" bg={"primary.200"}>
+                  {tech}
+                </Tag>
+              ))}
+            </Stack>
+            <Text>{desc}</Text>
+            <Link isExternal href={link}>
+              Github Repo
+            </Link>
+          </Container>
+        </Layout>
+      )}
+    </>
   );
 };
 
