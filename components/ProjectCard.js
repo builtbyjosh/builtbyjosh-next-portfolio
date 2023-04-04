@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Container, Stack, Text, Tag, Link, Box } from "@chakra-ui/react";
+import { Container, Stack, Text, Tag, Box } from "@chakra-ui/react";
+import Link from "next/link";
 
 const ProjectCard = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-  const { id, title, desc, link, technologies } = project;
+  const { uid, title, desc, link, technologies } = project;
   return (
     <Container maxW="2xl" p={2}>
       <Stack direction={"column"}>
-        <Box onClick={toggleOpen} key={id}>
+        <Box onClick={toggleOpen} key={uid}>
           <Stack
             p={4}
             rounded="lg"
@@ -21,10 +22,10 @@ const ProjectCard = ({ project }) => {
               <Stack direction={"column"} spacing={0} align="start">
                 <Stack direction={{ base: "column", md: "row" }}>
                   <Link
-                    href={link}
+                    href={`projects/${uid}`}
                     fontWeight="bold"
-                    isExternal
                     fontSize={"lg"}
+                    shallow
                   >
                     {title}
                   </Link>

@@ -19,8 +19,18 @@ const getAllProjects = async () => {
 };
 
 const getProjectById = async (projectId) => {
-  const projectRef = doc(db, "project", projectId);
-  await getDoc(projectRef);
+  try {
+    console.log("IS THIS GETTING THE ID: ", projectId);
+    const projectRef = doc(db, "project", projectId);
+    const project = await getDoc(projectRef);
+    if (project.exists()) {
+      console.log("PROJECT DATA: ", project.data());
+      return { uid: projectId, ...project.data() };
+    }
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
 const addProject = async ({ title, desc, technologies, link }) => {
