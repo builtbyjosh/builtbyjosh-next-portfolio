@@ -14,14 +14,13 @@ import LoadingContext from "../../hooks/LoadingContext";
 
 const ProjectListItem = ({ project }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { setIsLoading } = useContext(LoadingContext);
+  const { refreshProjects } = useContext(LoadingContext);
   const { title, link, uid } = project;
   const handleProjectDelete = async (uid) => {
-    setIsLoading(true);
     if (confirm("Are you sure you wanna delete this todo?")) {
       deleteProject(uid);
     }
-    setIsLoading(false);
+    refreshProjects();
   };
 
   return (

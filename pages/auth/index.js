@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Box, Heading, Link, Stack } from "@chakra-ui/react";
 import LoginForm from "../../components/admin/LoginForm";
 import { auth } from "../../firebase/config";
@@ -8,23 +7,17 @@ import ProjectList from "../../components/admin/ProjectList";
 import AddNewProject from "../../components/admin/AddNewProject";
 import LoadingContext from "../../hooks/LoadingContext";
 import { getAllProjects } from "../api/projects";
+import { useRouter } from "next/router";
 
-const Auth = () => {
+const Auth = ({ projects }) => {
   const { isLoggedIn, user } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedProjects = await getAllProjects();
-      setProjects(fetchedProjects);
-    };
-
-    fetchData();
-  }, [isLoading]);
+  const router = useRouter();
+  const refreshProjects = () => {
+    router.replace(router.asPath);
+  };
 
   return (
-    <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+    <LoadingContext.Provider value={{ refreshProjects }}>
       <Stack align={"center"} justify={"center"}>
         <Heading my={5} fontSize={"5xl"}>
           {isLoggedIn ? "Admin Panel" : "Log In"}
@@ -54,3 +47,8 @@ const Auth = () => {
   );
 };
 export default Auth;
+
+export async function getServerSideProps() {
+  const projects = await getAllProjects();
+  return { props: { projects } };
+}

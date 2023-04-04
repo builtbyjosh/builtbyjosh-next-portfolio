@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import LoadingContext from "../../hooks/LoadingContext";
 
 const EditProject = ({ project, isOpen, onClose }) => {
-  const { setIsLoading } = useContext(LoadingContext);
+  const { refreshProjects } = useContext(LoadingContext);
   const { title, desc, technologies, link, createdAt, uid } = project;
   const {
     register,
@@ -23,8 +23,6 @@ const EditProject = ({ project, isOpen, onClose }) => {
   } = useForm();
 
   const handleProjectUpdate = async (data) => {
-    setIsLoading(true);
-
     const technologiesArr = data.technologies.split(",");
     const project = {
       projectId: uid,
@@ -34,8 +32,8 @@ const EditProject = ({ project, isOpen, onClose }) => {
       technologies: technologiesArr,
     };
     await updateProject(project);
-    setIsLoading(false);
 
+    refreshProjects();
     onClose();
   };
   return (
