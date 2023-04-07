@@ -7,6 +7,7 @@ import {
   Container,
   Heading,
   Icon,
+  Center,
 } from "@chakra-ui/react";
 import { FaCheck } from "react-icons/fa";
 
@@ -63,17 +64,19 @@ const AboutMe = () => {
             </Heading>
 
             <Container maxW={"6xl"} mt={10}>
-              <SimpleGrid columns={{ base: 2, sm: 3 }} spacing={10}>
-                {skillList.map((skill, index) => (
-                  <Stack direction={"row"} key={index} align={"top"}>
-                    <Box color={"primary.600"} px={2}>
-                      <Icon as={FaCheck} />
-                    </Box>
+              <Center>
+                <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={10}>
+                  {skillList.map((skill, index) => (
+                    <Stack direction={"row"} key={index} align={"top"}>
+                      <Box color={"primary.600"} px={2}>
+                        <Icon as={FaCheck} />
+                      </Box>
 
-                    <Text fontWeight={600}>{skill}</Text>
-                  </Stack>
-                ))}
-              </SimpleGrid>
+                      <Text fontWeight={600}>{skill}</Text>
+                    </Stack>
+                  ))}
+                </SimpleGrid>
+              </Center>
             </Container>
           </Box>
         </Stack>
