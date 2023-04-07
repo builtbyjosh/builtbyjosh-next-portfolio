@@ -9,7 +9,7 @@ const Layout = ({ heading, children }) => {
     <Box h={"100vh"}>
       <Header />
       <Flex align="center" justify="center" pb={{ base: "120px", md: "20px" }}>
-        <Box m={{ base: 5, md: 12, lg: 6 }} p={{ base: 5, lg: 12 }}>
+        <Box m={{ base: 2, md: 12, lg: 6 }} p={{ base: 0, lg: 12 }}>
           <Box>
             <VStack spacing={{ base: 4, md: 8, lg: 10 }}>
               <Heading
@@ -32,7 +32,12 @@ const Layout = ({ heading, children }) => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Box bg={"neutral.100"} borderRadius="lg" p={8} shadow="base">
+                  <Box
+                    bg={"neutral.100"}
+                    borderRadius="lg"
+                    p={{ base: 2, md: 8 }}
+                    shadow="base"
+                  >
                     <VStack textColor={"secondary.800"}>{children}</VStack>
                   </Box>
                 </motion.div>
