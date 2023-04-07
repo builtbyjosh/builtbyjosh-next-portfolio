@@ -17,6 +17,7 @@ const Layout = ({ heading, children }) => {
                   base: "4xl",
                   md: "5xl",
                 }}
+                textAlign={"center"}
               >
                 {heading}
               </Heading>
