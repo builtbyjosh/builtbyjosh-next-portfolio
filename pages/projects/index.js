@@ -6,7 +6,7 @@ import { getAllProjects } from "../api/projects";
 const Projects = ({ projects }) => {
   return (
     <Layout heading={"Some of My Work"}>
-      <Container maxW={"2xl"} p={2}>
+      <Container maxW={"2xl"} p={0}>
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
