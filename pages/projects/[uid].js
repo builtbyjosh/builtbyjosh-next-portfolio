@@ -8,35 +8,26 @@ const ProjectPage = ({ projectData }) => {
   return (
     <Layout heading={"Project Details"}>
       <Container maxW={"2xl"} p={2}>
-        <Heading>{title}</Heading>
-        <Stack direction={"row"} spacing="1">
-          {technologies.map((tech, index) => (
-            <Tag p={1} key={index} size="sm" bg={"primary.200"}>
-              {tech}
-            </Tag>
-          ))}
+        <Stack spacing={4}>
+          <Heading size={"lg"}>{title}</Heading>
+          <Stack direction={"row"} spacing="1">
+            {technologies.map((tech, index) => (
+              <Tag p={1} key={index} size="sm" bg={"primary.200"}>
+                {tech}
+              </Tag>
+            ))}
+          </Stack>
+          <Text lineHeight="taller">{desc}</Text>
+          <Link isExternal href={link} color={"primary.500"}>
+            Github Repo
+          </Link>
         </Stack>
-        <Text>{desc}</Text>
-        <Link isExternal href={link}>
-          Github Repo
-        </Link>
       </Container>
     </Layout>
   );
 };
 
 export default ProjectPage;
-
-// export async function getStaticPaths() {
-//   const projects = await getAllProjects();
-//   const paths = projects.map((project) => ({
-//     params: { uid: project.uid },
-//   }));
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
 
 export async function getServerSideProps({ params: { uid } }) {
   const projectData = await getProjectById(uid);
