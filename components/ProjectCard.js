@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { Container, Stack, Text, Tag, Box } from "@chakra-ui/react";
 import Link from "next/link";
 
 const ProjectCard = ({ project }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleOpen = () => setIsOpen(!isOpen);
   const { uid, title, desc, link, technologies } = project;
   return (
     <Container maxW="2xl" p={2}>
       <Stack direction={"column"}>
-        <Box onClick={toggleOpen} key={uid}>
+        <Box key={uid}>
           <Stack
             p={4}
             rounded="lg"
@@ -19,8 +16,8 @@ const ProjectCard = ({ project }) => {
             _hover={{ shadow: "lg" }}
           >
             <Stack direction={"column"} align="start" justify="flex-start">
-              <Stack direction={"column"} spacing={0} align="start">
-                <Stack direction={{ base: "column", md: "row" }}>
+              <Stack direction={"column"} spacing={2} align="start">
+                <Stack direction={{ base: "column", md: "row" }} spacing={3}>
                   <Link
                     href={`projects/${uid}`}
                     fontWeight="bold"
@@ -38,21 +35,9 @@ const ProjectCard = ({ project }) => {
                   </Stack>
                 </Stack>
 
-                {!isOpen && (
-                  <Text
-                    fontSize="sm"
-                    color={"primary.500"}
-                    noOfLines={{ base: 2 }}
-                  >
-                    {desc}
-                  </Text>
-                )}
-
-                {isOpen && (
-                  <Text fontSize="sm" color={"primary.500"}>
-                    {desc}
-                  </Text>
-                )}
+                <Text fontSize="sm" color={"primary.500"} noOfLines={2}>
+                  {desc}
+                </Text>
               </Stack>
             </Stack>
           </Stack>
