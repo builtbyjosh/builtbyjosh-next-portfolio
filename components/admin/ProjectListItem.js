@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   Stack,
   Text,
@@ -11,9 +11,12 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { deleteProject } from "../../pages/api/projects";
 import EditProject from "./EditProject";
 import LoadingContext from "../../hooks/LoadingContext";
+import EditForm from "./EditForm";
 
 const ProjectListItem = ({ project }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => setIsOpen(!isOpen);
   const { refreshProjects } = useContext(LoadingContext);
   const { title, link, uid } = project;
   const handleProjectDelete = async (uid) => {
@@ -38,12 +41,29 @@ const ProjectListItem = ({ project }) => {
         <Stack spacing={2} direction="row" alignItems="center">
           <IconButton
             icon={<FaTrash />}
+            bg={"primary.500"}
+            color={"secondary.100"}
             onClick={() => handleProjectDelete(uid)}
+            _hover={{ bg: "black" }}
           />
-          <IconButton icon={<FaEdit />} onClick={onOpen} />
+          <IconButton
+            icon={<FaEdit />}
+            onClick={toggleOpen}
+            bg={"primary.500"}
+            color={"secondary.100"}
+            _hover={{ bg: "black" }}
+          />
         </Stack>
       </Stack>
-      <EditProject project={project} isOpen={isOpen} onClose={onClose} />
+
+      {isOpen && (
+        <Box>
+          <Text fontWeight={"bold"} mb={2}>
+            Edit Project
+          </Text>
+          <EditForm project={project} toggleOpen={toggleOpen} />
+        </Box>
+      )}
     </Stack>
   );
 };
