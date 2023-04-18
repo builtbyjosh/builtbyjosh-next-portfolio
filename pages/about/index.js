@@ -40,7 +40,7 @@ const AboutMe = () => {
                 Flatiron Schools Software Engineering Bootcamp
               </span>
               . Shortly after completing my bootcamp, I landed my first role as
-              a Frontend Developer. And had to quickly get up to speed working
+              a Frontend Developer and had to quickly get up to speed working
               with
               <span style={{ fontWeight: "bold" }}>TypeScript</span> and{" "}
               <span style={{ fontWeight: "bold" }}>Chakra-UI</span>, neither of

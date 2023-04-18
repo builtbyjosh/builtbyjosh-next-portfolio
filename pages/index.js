@@ -11,7 +11,7 @@ export default function Home() {
           <Heading size={"md"}>Joshua Collins</Heading>
         </Stack>
         <Text fontSize={"lg"} color={"primary.500"}>
-          I am a software developer specializing in Front End Development based
+          I am a Software Developer specializing in Front End Development based
           in Chicago, Il.{" "}
         </Text>
         <br />
